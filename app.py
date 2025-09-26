@@ -3,6 +3,23 @@ import numpy as np
 import librosa
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
+import streamlit as st
+import gdown
+import os
+from tensorflow.keras.models import load_model
+
+# Define the Google Drive file ID
+MODEL_FILE_ID = '1GsplInchAd4d6hQMciDTCz8pxHCTEOLz'
+
+# Define the local path to save the model
+MODEL_PATH = 'cnn_model.h5'
+
+# Check if the model is already downloaded
+if not os.path.exists(MODEL_PATH):
+    # Construct the download URL
+    download_url = f'https://drive.google.com/uc?id={MODEL_FILE_ID}'
+    # Download the model file
+    gdown.download(download_url, MODEL_PATH, quiet=False)
 
 # Load CNN model
 model = load_model("cnn_model.h5")
